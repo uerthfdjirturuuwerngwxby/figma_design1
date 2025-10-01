@@ -3,11 +3,72 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Professional resume writing service to help you land more interviews with ATS-optimized resumes crafted by HR experts.">
   <title>Resume Service - Your Resume Deserves a Yes</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800&family=Inter:wght@600&display=swap" rel="stylesheet">
   <style>
+    /* ===== CSS VARIABLES ===== */
+    :root {
+      /* Colors */
+      --color-primary: #ff1744;
+      --color-primary-dark: #e0153c;
+      --color-accent: #FA1239;
+      --color-background: linear-gradient(90deg, #FFCBD4 0%, #FFE4E9 100%);
+      --color-text: #000000;
+      --color-text-light: #666666;
+      --color-white: #FFFFFF;
+      --color-ellipse-outer: #FFD1DA;
+      --color-ellipse-inner: #FFE7EB;
+      --color-rating: #1CB098;
+      --color-feature-badge: rgba(253, 146, 164, 0.3);
+      
+      /* Font Sizes */
+      --font-size-xs: 0.7rem;
+      --font-size-sm: 0.8rem;
+      --font-size-base: 1rem;
+      --font-size-lg: 1.1rem;
+      --font-size-xl: 1.3rem;
+      --font-size-2xl: 1.4rem;
+      --font-size-3xl: 1.6rem;
+      --font-size-4xl: 1.8rem;
+      --font-size-5xl: 2rem;
+      --font-size-6xl: 2.2rem;
+      --font-size-hero: 3.5rem;
+      
+      /* Spacing */
+      --spacing-xs: 5px;
+      --spacing-sm: 10px;
+      --spacing-md: 15px;
+      --spacing-lg: 20px;
+      --spacing-xl: 25px;
+      --spacing-2xl: 30px;
+      --spacing-3xl: 40px;
+      --spacing-4xl: 50px;
+      --spacing-5xl: 60px;
+      --spacing-6xl: 80px;
+      --spacing-7xl: 100px;
+      
+      /* Border Radius */
+      --border-radius-sm: 8px;
+      --border-radius-md: 10px;
+      --border-radius-lg: 15px;
+      --border-radius-xl: 25px;
+      --border-radius-full: 50%;
+      
+      /* Shadows */
+      --shadow-sm: 0 2px 10px rgba(0, 0, 0, 0.1);
+      --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.1);
+      --shadow-lg: 0px 8px 25px rgba(0, 0, 0, 0.12);
+      --shadow-xl: 0px 15px 35px rgba(0, 0, 0, 0.18);
+      --shadow-primary: 0 4px 15px rgba(255, 23, 68, 0.4);
+      --shadow-primary-hover: 0 6px 20px rgba(255, 23, 68, 0.6);
+      --shadow-outline: 0 4px 15px rgba(255, 23, 68, 0.3);
+      --shadow-outline-hover: 0 6px 20px rgba(255, 23, 68, 0.5);
+    }
+
+    /* ===== RESET & BASE STYLES ===== */
     * {
       margin: 0;
       padding: 0;
@@ -19,68 +80,124 @@
       font-weight: 500;
       font-size: 18px;
       line-height: 21.6px;
-      color: #000000;
+      color: var(--color-text);
       overflow-x: hidden;
     }
 
-    /* Hero Section */
-    .hero-section {
-      width: 100%;
-      min-height: 100vh;
-      position: relative;
+    /* ===== REUSABLE COMPONENTS ===== */
+    .container {
+      max-width: 1440px;
+      margin: 0 auto;
+      padding: 0 5%;
     }
 
-    .hero-background {
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(90deg, #FFCBD4 0%, #FFE4E9 100%);
+    .btn {
+      padding: 12px 24px;
+      border-radius: var(--border-radius-xl);
+      font-weight: 500;
+      font-size: 14px;
+      cursor: pointer;
+      transition: all 0.3s, transform 0.2s;
+      white-space: nowrap;
+      min-width: 160px;
+      text-align: center;
       position: relative;
+      overflow: hidden;
+      border: none;
     }
 
-    /* Navigation */
-    .navigation {
+    .btn--primary {
+      background: var(--color-primary);
+      color: var(--color-white);
+      border: 2px solid var(--color-primary);
+      box-shadow: var(--shadow-primary);
+    }
+
+    .btn--primary:hover {
+      background: var(--color-primary-dark);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-primary-hover);
+    }
+
+    .btn--outline {
+      background: var(--color-white);
+      color: var(--color-primary);
+      border: 2px solid var(--color-primary);
+      box-shadow: var(--shadow-outline);
+    }
+
+    .btn--outline:hover {
+      background: var(--color-primary);
+      color: var(--color-white);
+      box-shadow: var(--shadow-outline-hover);
+    }
+
+    /* Shine effect for buttons */
+    .btn::before {
+      content: '';
       position: absolute;
       top: 0;
-      left: 0;
+      left: -100%;
       width: 100%;
-      height: 100px;
-      z-index: 10;
-      background-color: white;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+      transition: left 0.7s;
     }
 
-    .nav-container {
+    .btn:hover::before {
+      left: 100%;
+    }
+
+    .card {
+      background: var(--color-white);
+      border-radius: var(--border-radius-xl);
+      box-shadow: var(--shadow-lg);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .card:hover {
+      transform: translateY(-12px);
+      box-shadow: var(--shadow-xl);
+    }
+
+    /* ===== HEADER & NAVIGATION ===== */
+    .header {
+      width: 100%;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 100;
+      background-color: var(--color-white);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .nav {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      height: 100%;
-      padding: 0 5%;
+      height: 100px;
       gap: 70px;
-      max-width: 1440px;
-      margin: 0 auto;
     }
 
-    .logo-container {
-      display: flex;
-      align-items: center;
+    .logo {
       width: 180px;
       height: 45px;
     }
 
-    .logo-container img {
+    .logo img {
       width: 100%;
       height: 100%;
       object-fit: contain;
     }
 
-    .nav-menu {
+    .nav__menu {
       display: flex;
       align-items: center;
       gap: 24px;
       height: 42px;
     }
 
-    .nav-item {
+    .nav__item {
       display: flex;
       align-items: center;
       padding: 10px;
@@ -90,23 +207,22 @@
       transition: color 0.3s;
     }
 
-    .nav-item:hover {
-      color: #ff1744;
+    .nav__item:hover {
+      color: var(--color-primary);
     }
 
-    .nav-item span {
+    .nav__item span {
       font-size: 16px;
       font-weight: 500;
       line-height: 21.6px;
       color: #282828;
     }
 
-    .nav-cta-button {
-      background: #ff1744;
-      color: white;
-      border: none;
+    .nav__cta {
+      background: var(--color-primary);
+      color: var(--color-white);
       padding: 10px 24px;
-      border-radius: 25px;
+      border-radius: var(--border-radius-xl);
       font-weight: 500;
       font-size: 14px;
       cursor: pointer;
@@ -114,16 +230,17 @@
       white-space: nowrap;
       position: relative;
       overflow: hidden;
-      box-shadow: 0 4px 15px rgba(255, 23, 68, 0.4);
+      box-shadow: var(--shadow-primary);
+      border: none;
     }
 
-    .nav-cta-button:hover {
-      background: #e0153c;
+    .nav__cta:hover {
+      background: var(--color-primary-dark);
       transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(255, 23, 68, 0.6);
+      box-shadow: var(--shadow-primary-hover);
     }
 
-    .nav-cta-button::before {
+    .nav__cta::before {
       content: '';
       position: absolute;
       top: 0;
@@ -134,7 +251,7 @@
       transition: left 0.5s;
     }
 
-    .nav-cta-button:hover::before {
+    .nav__cta:hover::before {
       left: 100%;
     }
 
@@ -172,47 +289,60 @@
       transform: rotate(-45deg) translate(6px, -6px);
     }
 
-    /* Hero Content */
-    .hero-content {
+    /* ===== HERO SECTION ===== */
+    .hero {
+      width: 100%;
+      min-height: 100vh;
+      position: relative;
+      padding-top: 100px;
+    }
+
+    .hero__background {
+      width: 100%;
+      height: 100%;
+      background: var(--color-background);
+      position: relative;
+    }
+
+    .hero__content {
       display: flex;
       width: 100%;
       height: 100%;
       position: relative;
-      padding-top: 100px;
       max-width: 1440px;
       margin: 0 auto;
     }
 
-    .hero-text-section {
+    .hero__text {
       width: 50%;
-      padding: 100px 0 0 5%;
+      padding: var(--spacing-7xl) 0 0 5%;
       display: flex;
       flex-direction: column;
-      gap: 30px;
+      gap: var(--spacing-2xl);
       position: relative;
     }
 
-    .hero-title-container {
+    .hero__title-container {
       display: flex;
       flex-direction: column;
-      gap: 10px;
+      gap: var(--spacing-sm);
     }
 
-    .hero-title-line {
+    .hero__title-line {
       font-weight: 700;
-      font-size: 3.5rem;
+      font-size: var(--font-size-hero);
       line-height: 1.2;
-      color: #000000;
+      color: var(--color-text);
     }
 
     .highlight-text {
-      color: #FA1239;
+      color: var(--color-accent);
       position: relative;
       display: inline-block;
     }
 
     .lets-text {
-      color: #000000; /* Make "Let's" black */
+      color: var(--color-text);
     }
 
     .decorative-lines-container {
@@ -229,11 +359,11 @@
       max-width: 417px;
       height: 18px;
       z-index: 1;
-      margin-top: 4px; /* Reduced margin to move lines upward */
+      margin-top: 4px;
       display: flex;
       flex-direction: column;
       gap: 4px;
-      align-items: center; /* Center the lines horizontally */
+      align-items: center;
     }
 
     .line-1, .line-2 {
@@ -242,95 +372,39 @@
     }
 
     .line-1 {
-      width: 80%; /* First line is 80% width */
+      width: 80%;
     }
 
     .line-2 {
-      width: 100%; /* Second line is 100% width */
+      width: 100%;
     }
 
-    .hero-description {
+    .hero__description {
       font-weight: 500;
-      font-size: 1.1rem;
+      font-size: var(--font-size-lg);
       line-height: 1.8;
-      color: #000000;
+      color: var(--color-text);
       max-width: 100%;
     }
 
-    .hero-buttons {
+    .hero__buttons {
       display: flex;
       align-items: center;
-      gap: 20px;
+      gap: var(--spacing-lg);
       flex-wrap: wrap;
     }
 
-    .btn-outline, .btn-primary {
-      padding: 12px 24px;
-      border-radius: 25px;
-      font-weight: 500;
-      font-size: 14px;
-      cursor: pointer;
-      transition: all 0.3s;
-      white-space: nowrap;
-      min-width: 160px;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .btn-outline {
-      background: white;
-      color: #ff1744;
-      border: 2px solid #ff1744;
-      box-shadow: 0 4px 15px rgba(255, 23, 68, 0.3);
-    }
-
-    .btn-outline:hover {
-      background: #ff1744;
-      color: white;
-      box-shadow: 0 6px 20px rgba(255, 23, 68, 0.5);
-    }
-
-    .btn-primary {
-      background: #ff1744;
-      color: white;
-      border: 2px solid #ff1744;
-      box-shadow: 0 4px 15px rgba(255, 23, 68, 0.4);
-    }
-
-    .btn-primary:hover {
-      background: #e0153c;
-      transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(255, 23, 68, 0.6);
-    }
-
-    /* Shine effect for buttons */
-    .btn-outline::before, .btn-primary::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
-      transition: left 0.7s;
-    }
-
-    .btn-outline:hover::before, .btn-primary:hover::before {
-      left: 100%;
-    }
-
     /* Hero Image Section */
-    .hero-image-section {
+    .hero__image-section {
       flex: 1;
       position: relative;
-      padding: 50px 5% 0 0;
+      padding: var(--spacing-4xl) 5% 0 0;
       display: flex;
       justify-content: center;
       align-items: flex-end;
     }
 
-    .hero-image-container {
+    .hero__image-container {
       position: relative;
       width: 100%;
       max-width: 650px;
@@ -345,8 +419,8 @@
       position: absolute;
       width: 580px;
       height: 580px;
-      background: #FFD1DA;
-      border-radius: 50%;
+      background: var(--color-ellipse-outer);
+      border-radius: var(--border-radius-full);
       z-index: 1;
       top: 60%;
       left: 50%;
@@ -357,15 +431,15 @@
       position: absolute;
       width: 520px;
       height: 520px;
-      background: #FFE7EB;
-      border-radius: 50%;
+      background: var(--color-ellipse-inner);
+      border-radius: var(--border-radius-full);
       z-index: 2;
       top: 60%;
       left: 50%;
       transform: translate(-50%, -50%);
     }
 
-    .hero-image {
+    .hero__image {
       position: absolute;
       width: 480px;
       height: 720px;
@@ -374,7 +448,7 @@
       top: 55%;
       left: 50%;
       transform: translate(-50%, -50%);
-      border-radius: 10px;
+      border-radius: var(--border-radius-md);
     }
 
     .rating-card {
@@ -384,14 +458,14 @@
       width: 300px;
       height: 90px;
       background: rgba(255, 255, 255, 0.7);
-      border-radius: 10px;
+      border-radius: var(--border-radius-md);
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 15px;
-      padding: 15px;
+      gap: var(--spacing-md);
+      padding: var(--spacing-md);
       z-index: 4;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      box-shadow: var(--shadow-md);
       backdrop-filter: blur(5px);
     }
 
@@ -400,7 +474,7 @@
       font-weight: 600;
       font-size: 2.5rem;
       line-height: 1;
-      color: #1CB098;
+      color: var(--color-rating);
     }
 
     .rating-details {
@@ -422,26 +496,26 @@
 
     .rating-text {
       font-weight: 600;
-      font-size: 1rem;
+      font-size: var(--font-size-base);
       line-height: 1.2;
-      color: #000000;
+      color: var(--color-text);
     }
 
     .stats-card {
       position: absolute;
-      bottom: 20px;
+      bottom: var(--spacing-lg);
       right: 0;
       width: 220px;
       height: 110px;
       background: rgba(255, 255, 255, 0.7);
-      border-radius: 10px;
+      border-radius: var(--border-radius-md);
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 15px;
-      padding: 20px;
+      gap: var(--spacing-md);
+      padding: var(--spacing-lg);
       z-index: 4;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      box-shadow: var(--shadow-md);
       backdrop-filter: blur(5px);
     }
 
@@ -454,7 +528,7 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      border-radius: 50%;
+      border-radius: var(--border-radius-full);
     }
 
     .stats-content {
@@ -464,73 +538,73 @@
 
     .stats-number {
       font-weight: 800;
-      font-size: 1.5rem;
+      font-size: var(--font-size-xl);
       line-height: 1.2;
-      color: #000000;
+      color: var(--color-text);
     }
 
     .stats-text {
-      font-size: 0.9rem;
+      font-size: var(--font-size-sm);
       line-height: 1.2;
-      color: #666666;
+      color: var(--color-text-light);
     }
 
-    /* Features Section - Increased sizes */
-    .features-section {
+    /* ===== FEATURES SECTION ===== */
+    .features {
       width: 100%;
-      background: #FFFFFF;
+      background: var(--color-white);
       position: relative;
-      padding: 100px 0;
+      padding: var(--spacing-7xl) 0;
     }
 
-    .features-container {
+    .features__container {
       position: relative;
       z-index: 2;
       padding: 0 5%;
       display: flex;
       flex-direction: column;
-      gap: 60px;
+      gap: var(--spacing-5xl);
       max-width: 1400px;
       margin: 0 auto;
     }
 
-    .features-header {
+    .features__header {
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 25px;
+      gap: var(--spacing-xl);
       height: auto;
       text-align: center;
     }
 
-    .features-badge {
-      background: rgba(253, 146, 164, 0.3);
-      border-radius: 8px;
+    .features__badge {
+      background: var(--color-feature-badge);
+      border-radius: var(--border-radius-sm);
       padding: 12px 24px;
       font-weight: 600;
-      font-size: 18px;
+      font-size: var(--font-size-base);
       line-height: 1.2;
-      color: #000000;
+      color: var(--color-text);
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 10px;
+      gap: var(--spacing-sm);
     }
 
-    .features-title {
+    .features__title {
       font-weight: 700;
-      font-size: 2.2rem;
+      font-size: var(--font-size-6xl);
       line-height: 1.3;
-      color: #000000;
+      color: var(--color-text);
       text-align: center;
       max-width: 900px;
     }
 
-    .features-grid {
+    .features__grid {
       display: flex;
       justify-content: center;
       align-items: stretch;
-      gap: 30px;
+      gap: var(--spacing-2xl);
       height: auto;
       flex-wrap: wrap;
     }
@@ -540,49 +614,49 @@
       min-width: 280px;
       max-width: 330px;
       min-height: 480px;
-      background: #FFFFFF;
-      border-radius: 25px;
-      box-shadow: 0px 8px 25px rgba(0, 0, 0, 0.12);
+      background: var(--color-white);
+      border-radius: var(--border-radius-xl);
+      box-shadow: var(--shadow-lg);
       display: flex;
       flex-direction: column;
-      gap: 25px;
-      padding: 30px 25px;
+      gap: var(--spacing-xl);
+      padding: var(--spacing-2xl) var(--spacing-xl);
       transition: transform 0.3s, box-shadow 0.3s;
     }
 
     .feature-card:hover {
       transform: translateY(-12px);
-      box-shadow: 0px 15px 35px rgba(0, 0, 0, 0.18);
+      box-shadow: var(--shadow-xl);
     }
 
-    .feature-image {
+    .feature__image {
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 20px;
+      gap: var(--spacing-lg);
       height: 250px;
     }
 
-    .feature-image img {
+    .feature__image img {
       width: 100%;
       height: 200px;
       object-fit: cover;
-      border-radius: 15px;
+      border-radius: var(--border-radius-lg);
     }
 
-    .feature-title {
-      font-size: 1.4rem;
+    .feature__title {
+      font-size: var(--font-size-2xl);
       line-height: 1.3;
-      color: #000000;
+      color: var(--color-text);
       height: auto;
       font-weight: 700;
     }
 
-    .feature-description {
+    .feature__description {
       font-weight: 400;
-      font-size: 1rem;
+      font-size: var(--font-size-base);
       line-height: 1.6;
-      color: #000000;
+      color: var(--color-text);
       height: auto;
     }
 
@@ -591,22 +665,22 @@
       display: none;
     }
 
-    /* Responsive Design */
+    /* ===== RESPONSIVE DESIGN ===== */
     @media (max-width: 1200px) {
-      .hero-title-line {
+      .hero__title-line {
         font-size: 3rem;
       }
       
-      .hero-text-section {
-        padding: 80px 0 0 5%;
+      .hero__text {
+        padding: var(--spacing-6xl) 0 0 5%;
       }
       
-      .hero-image-container {
+      .hero__image-container {
         max-width: 550px;
         height: 700px;
       }
       
-      .hero-image {
+      .hero__image {
         width: 420px;
         height: 620px;
       }
@@ -632,8 +706,8 @@
         height: 100px;
       }
 
-      .features-title {
-        font-size: 2rem;
+      .features__title {
+        font-size: var(--font-size-5xl);
       }
       
       .feature-card {
@@ -644,7 +718,7 @@
 
       .decorative-lines {
         max-width: 350px;
-        margin-top: 4px; /* Consistent with desktop */
+        margin-top: 4px;
         height: 16px;
         gap: 3px;
       }
@@ -655,27 +729,27 @@
     }
 
     @media (max-width: 992px) {
-      .hero-content {
+      .hero__content {
         flex-direction: column;
         padding-top: 120px;
       }
       
-      .hero-text-section {
+      .hero__text {
         width: 100%;
         padding: 0 5%;
         text-align: center;
         align-items: center;
-        gap: 25px;
+        gap: var(--spacing-xl);
       }
       
-      .hero-title-line {
+      .hero__title-line {
         font-size: 2.5rem;
         line-height: 1.2;
       }
       
       .decorative-lines {
         position: relative;
-        margin: 4px auto 0; /* Consistent with desktop */
+        margin: 4px auto 0;
         left: 0;
         transform: none;
         max-width: 320px;
@@ -687,18 +761,18 @@
         width: 80%;
       }
       
-      .hero-image-section {
+      .hero__image-section {
         width: 100%;
-        padding: 40px 5% 0;
+        padding: var(--spacing-3xl) 5% 0;
         align-items: flex-end;
       }
       
-      .hero-image-container {
+      .hero__image-container {
         max-width: 100%;
         height: 650px;
       }
       
-      .hero-image {
+      .hero__image {
         width: 380px;
         height: 560px;
       }
@@ -727,7 +801,7 @@
         right: 10%;
       }
       
-      .features-grid {
+      .features__grid {
         justify-content: center;
       }
       
@@ -736,75 +810,75 @@
         max-width: calc(50% - 20px);
       }
 
-      .features-title {
-        font-size: 1.8rem;
+      .features__title {
+        font-size: var(--font-size-4xl);
       }
 
       /* Improved Tablet Navigation */
-      .nav-container {
-        gap: 20px;
+      .nav {
+        gap: var(--spacing-lg);
         padding: 0 5%;
       }
       
-      .logo-container {
+      .logo {
         width: 160px;
         height: 40px;
       }
       
-      .nav-menu {
-        gap: 15px;
+      .nav__menu {
+        gap: var(--spacing-md);
       }
       
-      .nav-item span {
+      .nav__item span {
         font-size: 14px;
       }
       
-      .nav-cta-button {
+      .nav__cta {
         padding: 8px 16px;
         font-size: 12px;
       }
     }
 
     @media (max-width: 768px) {
-      .navigation {
+      .header {
         height: 80px;
       }
       
-      .logo-container {
+      .logo {
         width: 140px;
         height: 35px;
       }
       
-      .nav-menu {
+      .nav__menu {
         display: none;
         position: fixed;
         top: 80px;
         left: 0;
         width: 100%;
-        background: white;
+        background: var(--color-white);
         flex-direction: column;
-        padding: 20px;
+        padding: var(--spacing-lg);
         box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
-        gap: 15px;
+        gap: var(--spacing-md);
         z-index: 99;
         height: auto;
         max-height: calc(100vh - 80px);
         overflow-y: auto;
       }
       
-      .nav-menu.active {
+      .nav__menu.active {
         display: flex;
       }
       
-      .nav-item {
+      .nav__item {
         width: 100%;
         justify-content: center;
-        padding: 15px;
+        padding: var(--spacing-md);
         height: auto;
         border-bottom: 1px solid #f0f0f0;
       }
       
-      .nav-item:last-child {
+      .nav__item:last-child {
         border-bottom: none;
       }
       
@@ -819,36 +893,36 @@
       .mobile-nav-cta {
         display: block !important;
         width: 100%;
-        margin-top: 10px;
+        margin-top: var(--spacing-sm);
         padding: 12px;
       }
       
-      .hero-title-line {
-        font-size: 2rem;
+      .hero__title-line {
+        font-size: var(--font-size-5xl);
       }
       
-      .hero-description {
-        font-size: 1rem;
+      .hero__description {
+        font-size: var(--font-size-base);
         line-height: 1.6;
       }
       
-      .hero-buttons {
+      .hero__buttons {
         flex-direction: column;
         width: 100%;
         max-width: 300px;
-        gap: 15px;
+        gap: var(--spacing-md);
       }
       
-      .btn-outline, .btn-primary {
+      .btn {
         width: 100%;
         padding: 12px 20px;
       }
       
-      .hero-image-container {
+      .hero__image-container {
         height: 550px;
       }
       
-      .hero-image {
+      .hero__image {
         width: 320px;
         height: 480px;
       }
@@ -875,7 +949,7 @@
       }
       
       .rating-text {
-        font-size: 0.9rem;
+        font-size: var(--font-size-sm);
       }
       
       .stars img {
@@ -886,9 +960,9 @@
       .stats-card {
         width: 160px;
         height: 80px;
-        bottom: 20px;
+        bottom: var(--spacing-lg);
         right: 5%;
-        padding: 15px;
+        padding: var(--spacing-md);
       }
       
       .stats-icon {
@@ -897,19 +971,19 @@
       }
       
       .stats-number {
-        font-size: 1.3rem;
+        font-size: var(--font-size-lg);
       }
       
       .stats-text {
-        font-size: 0.8rem;
+        font-size: var(--font-size-xs);
       }
       
-      .features-section {
-        padding: 80px 0;
+      .features {
+        padding: var(--spacing-6xl) 0;
       }
       
-      .features-title {
-        font-size: 1.6rem;
+      .features__title {
+        font-size: var(--font-size-3xl);
       }
       
       .feature-card {
@@ -918,17 +992,17 @@
         min-height: 420px;
       }
 
-      .feature-image {
+      .feature__image {
         height: 220px;
       }
 
-      .feature-image img {
+      .feature__image img {
         height: 180px;
       }
 
       .decorative-lines {
         max-width: 280px;
-        margin-top: 4px; /* Consistent with desktop */
+        margin-top: 4px;
         height: 12px;
         gap: 2px;
       }
@@ -939,23 +1013,23 @@
     }
 
     @media (max-width: 576px) {
-      .hero-section {
+      .hero {
         min-height: 90vh;
       }
       
-      .hero-text-section {
-        gap: 20px;
+      .hero__text {
+        gap: var(--spacing-lg);
       }
       
-      .hero-title-line {
-        font-size: 1.8rem;
+      .hero__title-line {
+        font-size: var(--font-size-4xl);
       }
       
-      .hero-image-container {
+      .hero__image-container {
         height: 480px;
       }
       
-      .hero-image {
+      .hero__image {
         width: 280px;
         height: 420px;
       }
@@ -975,7 +1049,7 @@
         height: 50px;
         bottom: 80px;
         left: 5%;
-        padding: 10px;
+        padding: var(--spacing-sm);
       }
       
       .rating-number {
@@ -983,7 +1057,7 @@
       }
       
       .rating-text {
-        font-size: 0.8rem;
+        font-size: var(--font-size-xs);
       }
       
       .stars img {
@@ -994,10 +1068,10 @@
       .stats-card {
         width: 140px;
         height: 70px;
-        bottom: 15px;
+        bottom: var(--spacing-md);
         right: 5%;
         padding: 12px;
-        gap: 10px;
+        gap: var(--spacing-sm);
       }
       
       .stats-icon {
@@ -1006,42 +1080,42 @@
       }
       
       .stats-number {
-        font-size: 1.1rem;
+        font-size: var(--font-size-base);
       }
       
       .stats-text {
-        font-size: 0.7rem;
+        font-size: var(--font-size-xs);
       }
       
-      .features-section {
-        padding: 60px 0;
+      .features {
+        padding: var(--spacing-5xl) 0;
       }
       
-      .features-badge {
-        font-size: 16px;
-        padding: 10px 20px;
+      .features__badge {
+        font-size: var(--font-size-base);
+        padding: var(--spacing-sm) var(--spacing-lg);
       }
       
-      .features-title {
-        font-size: 1.4rem;
+      .features__title {
+        font-size: var(--font-size-2xl);
       }
 
       .feature-card {
         min-height: 400px;
-        padding: 25px 20px;
+        padding: var(--spacing-xl) var(--spacing-lg);
       }
 
-      .feature-image {
+      .feature__image {
         height: 200px;
       }
 
-      .feature-image img {
+      .feature__image img {
         height: 160px;
       }
 
       .decorative-lines {
         max-width: 240px;
-        margin-top: 4px; /* Consistent with desktop */
+        margin-top: 4px;
         height: 10px;
         gap: 2px;
       }
@@ -1052,15 +1126,15 @@
     }
 
     @media (max-width: 400px) {
-      .hero-title-line {
-        font-size: 1.6rem;
+      .hero__title-line {
+        font-size: var(--font-size-3xl);
       }
       
-      .hero-image-container {
+      .hero__image-container {
         height: 420px;
       }
       
-      .hero-image {
+      .hero__image {
         width: 240px;
         height: 374px;
       }
@@ -1092,7 +1166,7 @@
 
       .decorative-lines {
         max-width: 300px;
-        margin-top: 4px; /* Consistent with desktop */
+        margin-top: 4px;
         height: 8px;
         gap: 1px;
       }
@@ -1104,172 +1178,174 @@
   </style>
 </head>
 <body>
-  <!-- Hero Section -->
-  <section class="hero-section">
-    <div class="hero-background">
-      <!-- Navigation -->
-      <nav class="navigation">
-        <div class="nav-container">
-          <div class="logo-container">
-            <img src="./Group.png" alt="Resume Service Logo">
-          </div>
-          
-          <div class="nav-menu" id="navMenu">
-            <div class="nav-item">
-              <span>Home</span>
-            </div>
-            <div class="nav-item">
-              <span>About Us</span>
-            </div>
-            <div class="nav-item">
-              <span>Our Services</span>
-            </div>
-            <div class="nav-item">
-              <span>Pricing</span>
-            </div>
-            <div class="nav-item">
-              <span>FAQ</span>
-            </div>
-            <button class="nav-cta-button mobile-nav-cta">
-              Get a quote
-            </button>
-          </div>
-          
-          <button class="nav-cta-button desktop-nav-cta">
-            Get a quote
-          </button>
-          
-          <button class="mobile-menu-toggle" id="mobileMenuToggle">
-            <span></span>
-            <span></span>
-            <span></span>
-          </button>
-        </div>
-      </nav>
+  <!-- Header with Navigation -->
+  <header class="header">
+    <nav class="nav container">
+      <div class="logo">
+        <img src="./Group.png" alt="Resume Service Logo">
+      </div>
+      
+      <ul class="nav__menu" id="navMenu">
+        <li class="nav__item">
+          <span>Home</span>
+        </li>
+        <li class="nav__item">
+          <span>About Us</span>
+        </li>
+        <li class="nav__item">
+          <span>Our Services</span>
+        </li>
+        <li class="nav__item">
+          <span>Pricing</span>
+        </li>
+        <li class="nav__item">
+          <span>FAQ</span>
+        </li>
+        <button class="nav__cta mobile-nav-cta">
+          Get a quote
+        </button>
+      </ul>
+      
+      <button class="nav__cta desktop-nav-cta">
+        Get a quote
+      </button>
+      
+      <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle navigation menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </nav>
+  </header>
 
-      <!-- Hero Content -->
-      <div class="hero-content">
-        <div class="hero-text-section">
-          <div class="hero-title-container">
-            <div class="hero-title-line">Your Resume</div>
-            <div class="hero-title-line">
-              <span class="highlight-text">Deserves A Yes </span>
-              <span class="lets-text">Let's</span>
-              <div class="decorative-lines">
-                <img src="./Vector 1.png" alt="Decorative line 1" class="line-1">
-                <img src="./Vector 2.png" alt="Decorative line 2" class="line-2">
-              </div>
-            </div>
-            <div class="hero-title-line">Make It Happen</div>
-          </div>
-          <p class="hero-description">
-            If Your Resume Isn't Getting Responses, It's Time For An Upgrade. Get An ATS-Optimized Resume Crafted By HR Experts To Help You Land More Interviews. Our Resumes Are Designed To Get Your Foot In The Door And Place Your Name At The Top Of The Shortlist.
-          </p>
-          <div class="hero-buttons">
-            <button class="btn-outline">
-              RESUME PACKAGES
-            </button>
-            <button class="btn-primary">
-              CONTACT US
-            </button>
-          </div>
-        </div>
-
-        <div class="hero-image-section">
-          <div class="hero-image-container">
-            <!-- Ellipses with background colors -->
-            <div class="ellipse-outer"></div>
-            <div class="ellipse-inner"></div>
-            
-            <!-- Hero Image -->
-            <img src="portrait-happy-young-woman-standing-with-backpack-holding-books-mobile-phone-isolated-white-wall-removebg-preview 1.png" alt="Happy professional woman with resume" class="hero-image">
-            
-            <!-- Rating Card -->
-            <div class="rating-card">
-              <div class="rating-number">4.9</div>
-              <div class="rating-details">
-                <div class="stars">
-                  <img src="https://static.codia.ai/image/2025-09-30/01y9CogeD6.png" alt="Star">
-                  <img src="https://static.codia.ai/image/2025-09-30/x2Tf8J5MB6.png" alt="Star">
-                  <img src="https://static.codia.ai/image/2025-09-30/oyQKGxD1Gr.png" alt="Star">
-                  <img src="https://static.codia.ai/image/2025-09-30/xVCuORdxyV.png" alt="Star">
-                  <img src="https://static.codia.ai/image/2025-09-30/UHagT3DVM2.png" alt="Star">
+  <!-- Main Content -->
+  <main>
+    <!-- Hero Section -->
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero__background">
+        <div class="hero__content">
+          <div class="hero__text">
+            <div class="hero__title-container">
+              <h1 id="hero-title" class="hero__title-line">Your Resume</h1>
+              <h1 class="hero__title-line">
+                <span class="highlight-text">Deserves A Yes </span>
+                <span class="lets-text">Let's</span>
+                <div class="decorative-lines">
+                  <img src="./Vector 1.png" alt="Decorative line 1" class="line-1">
+                  <img src="./Vector 2.png" alt="Decorative line 2" class="line-2">
                 </div>
-                <div class="rating-text">Instructor Rating</div>
+              </h1>
+              <h1 class="hero__title-line">Make It Happen</h1>
+            </div>
+            <p class="hero__description">
+              If Your Resume Isn't Getting Responses, It's Time For An Upgrade. Get An ATS-Optimized Resume Crafted By HR Experts To Help You Land More Interviews. Our Resumes Are Designed To Get Your Foot In The Door And Place Your Name At The Top Of The Shortlist.
+            </p>
+            <div class="hero__buttons">
+              <button class="btn btn--outline">
+                RESUME PACKAGES
+              </button>
+              <button class="btn btn--primary">
+                CONTACT US
+              </button>
+            </div>
+          </div>
+
+          <div class="hero__image-section">
+            <div class="hero__image-container">
+              <!-- Ellipses with background colors -->
+              <div class="ellipse-outer"></div>
+              <div class="ellipse-inner"></div>
+              
+              <!-- Hero Image -->
+              <img src="portrait-happy-young-woman-standing-with-backpack-holding-books-mobile-phone-isolated-white-wall-removebg-preview 1.png" alt="Happy professional woman with resume" class="hero__image">
+              
+              <!-- Rating Card -->
+              <div class="rating-card">
+                <div class="rating-number">4.9</div>
+                <div class="rating-details">
+                  <div class="stars">
+                    <img src="https://static.codia.ai/image/2025-09-30/01y9CogeD6.png" alt="Star">
+                    <img src="https://static.codia.ai/image/2025-09-30/x2Tf8J5MB6.png" alt="Star">
+                    <img src="https://static.codia.ai/image/2025-09-30/oyQKGxD1Gr.png" alt="Star">
+                    <img src="https://static.codia.ai/image/2025-09-30/xVCuORdxyV.png" alt="Star">
+                    <img src="https://static.codia.ai/image/2025-09-30/UHagT3DVM2.png" alt="Star">
+                  </div>
+                  <div class="rating-text">Instructor Rating</div>
+                </div>
+              </div>
+
+              <!-- Stats Card -->
+              <div class="stats-card">
+                <div class="stats-icon">
+                  <img src="https://static.codia.ai/image/2025-09-30/OQuZ6SXKPb.png" alt="Resume statistics icon">
+                </div>
+                <div class="stats-content">
+                  <div class="stats-number">260+</div>
+                  <div class="stats-text">Online Resume Created</div>
+                </div>
               </div>
             </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-            <!-- Stats Card -->
-            <div class="stats-card">
-              <div class="stats-icon">
-                <img src="https://static.codia.ai/image/2025-09-30/OQuZ6SXKPb.png" alt="Resume statistics icon">
-              </div>
-              <div class="stats-content">
-                <div class="stats-number">260+</div>
-                <div class="stats-text">Online Resume Created</div>
-              </div>
+    <!-- Features Section -->
+    <section class="features" aria-labelledby="features-title">
+      <div class="features__container">
+        <header class="features__header">
+          <div class="features__badge">
+            What you Get
+          </div>
+          <h2 id="features-title" class="features__title">
+            You're not just another applicant and your resume shouldn't look like one
+          </h2>
+        </header>
+
+        <div class="features__grid">
+          <article class="feature-card card">
+            <div class="feature__image">
+              <img src="https://static.codia.ai/image/2025-09-30/0p7ZnkKvJp.png" alt="ATS Resume Optimization">
             </div>
-          </div>
+            <h3 class="feature__title">A Resume That Passes ATS Filters</h3>
+            <p class="feature__description">
+              Get a professionally written, keyword-optimized resume that lands in recruiter inboxes—not rejection piles.
+            </p>
+          </article>
+
+          <article class="feature-card card">
+            <div class="feature__image">
+              <img src="https://static.codia.ai/image/2025-09-30/AZB4W5i6oN.png" alt="Professional Cover Letter">
+            </div>
+            <h3 class="feature__title">A Cover Letter That Gets Read</h3>
+            <p class="feature__description">
+              Stand out with a cover letter that speaks directly to the role and reflects your strengths.
+            </p>
+          </article>
+
+          <article class="feature-card card">
+            <div class="feature__image">
+              <img src="https://static.codia.ai/image/2025-09-30/gGmMaaWkbn.png" alt="LinkedIn Profile Optimization">
+            </div>
+            <h3 class="feature__title">A LinkedIn Profile That Works For You</h3>
+            <p class="feature__description">
+              Attract the right eyes, start conversations, and show up in recruiter searches.
+            </p>
+          </article>
+
+          <article class="feature-card card">
+            <div class="feature__image">
+              <img src="https://static.codia.ai/image/2025-09-30/An1AvKpFJj.png" alt="Interview Preparation">
+            </div>
+            <h3 class="feature__title">Interview Confidence</h3>
+            <p class="feature__description">
+              Interview preparation with real HR professionals so you speak clearly, confidently, and convincingly.
+            </p>
+          </article>
         </div>
       </div>
-    </div>
-  </section>
-
-  <!-- Features Section -->
-  <section class="features-section">
-    <div class="features-container">
-      <div class="features-header">
-        <div class="features-badge">
-          What you Get
-        </div>
-        <h2 class="features-title">
-          You're not just another applicant and your resume shouldn't look like one
-        </h2>
-      </div>
-
-      <div class="features-grid">
-        <div class="feature-card">
-          <div class="feature-image">
-            <img src="https://static.codia.ai/image/2025-09-30/0p7ZnkKvJp.png" alt="ATS Resume Optimization">
-          </div>
-          <h3 class="feature-title">A Resume That Passes ATS Filters</h3>
-          <p class="feature-description">
-            Get a professionally written, keyword-optimized resume that lands in recruiter inboxes—not rejection piles.
-          </p>
-        </div>
-
-        <div class="feature-card">
-          <div class="feature-image">
-            <img src="https://static.codia.ai/image/2025-09-30/AZB4W5i6oN.png" alt="Professional Cover Letter">
-          </div>
-          <h3 class="feature-title">A Cover Letter That Gets Read</h3>
-          <p class="feature-description">
-            Stand out with a cover letter that speaks directly to the role and reflects your strengths.
-          </p>
-        </div>
-
-        <div class="feature-card">
-          <div class="feature-image">
-            <img src="https://static.codia.ai/image/2025-09-30/gGmMaaWkbn.png" alt="LinkedIn Profile Optimization">
-          </div>
-          <h3 class="feature-title">A LinkedIn Profile That Works For You</h3>
-          <p class="feature-description">
-            Attract the right eyes, start conversations, and show up in recruiter searches.
-          </p>
-        </div>
-
-        <div class="feature-card">
-          <div class="feature-image">
-            <img src="https://static.codia.ai/image/2025-09-30/An1AvKpFJj.png" alt="Interview Preparation">
-          </div>
-          <h3 class="feature-title">Interview Confidence</h3>
-          <p class="feature-description">
-            Interview preparation with real HR professionals so you speak clearly, confidently, and convincingly.
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
+    </section>
+  </main>
 
   <script>
     // Mobile menu toggle functionality
@@ -1290,7 +1366,7 @@
       });
       
       // Close mobile menu when clicking on a nav item
-      const navItems = document.querySelectorAll('.nav-item, .mobile-nav-cta');
+      const navItems = document.querySelectorAll('.nav__item, .mobile-nav-cta');
       navItems.forEach(item => {
         item.addEventListener('click', function() {
           navMenu.classList.remove('active');
