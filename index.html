@@ -1,0 +1,1313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Resume Service - Your Resume Deserves a Yes</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800&family=Inter:wght@600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Figtree', sans-serif;
+      font-weight: 500;
+      font-size: 18px;
+      line-height: 21.6px;
+      color: #000000;
+      overflow-x: hidden;
+    }
+
+    /* Hero Section */
+    .hero-section {
+      width: 100%;
+      min-height: 100vh;
+      position: relative;
+    }
+
+    .hero-background {
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, #FFCBD4 0%, #FFE4E9 100%);
+      position: relative;
+    }
+
+    /* Navigation */
+    .navigation {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100px;
+      z-index: 10;
+      background-color: white;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 100%;
+      padding: 0 5%;
+      gap: 70px;
+      max-width: 1440px;
+      margin: 0 auto;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      width: 180px;
+      height: 45px;
+    }
+
+    .logo-container img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    .nav-menu {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      height: 42px;
+    }
+
+    .nav-item {
+      display: flex;
+      align-items: center;
+      padding: 10px;
+      gap: 4px;
+      height: 42px;
+      cursor: pointer;
+      transition: color 0.3s;
+    }
+
+    .nav-item:hover {
+      color: #ff1744;
+    }
+
+    .nav-item span {
+      font-size: 16px;
+      font-weight: 500;
+      line-height: 21.6px;
+      color: #282828;
+    }
+
+    .nav-cta-button {
+      background: #ff1744;
+      color: white;
+      border: none;
+      padding: 10px 24px;
+      border-radius: 25px;
+      font-weight: 500;
+      font-size: 14px;
+      cursor: pointer;
+      transition: all 0.3s, transform 0.2s;
+      white-space: nowrap;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 4px 15px rgba(255, 23, 68, 0.4);
+    }
+
+    .nav-cta-button:hover {
+      background: #e0153c;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(255, 23, 68, 0.6);
+    }
+
+    .nav-cta-button::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+      transition: left 0.5s;
+    }
+
+    .nav-cta-button:hover::before {
+      left: 100%;
+    }
+
+    /* Mobile Navigation */
+    .mobile-menu-toggle {
+      display: none;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 30px;
+      height: 21px;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      z-index: 100;
+    }
+
+    .mobile-menu-toggle span {
+      display: block;
+      height: 3px;
+      width: 100%;
+      background-color: #333;
+      border-radius: 3px;
+      transition: all 0.3s ease;
+    }
+
+    .mobile-menu-toggle.active span:nth-child(1) {
+      transform: rotate(45deg) translate(6px, 6px);
+    }
+
+    .mobile-menu-toggle.active span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .mobile-menu-toggle.active span:nth-child(3) {
+      transform: rotate(-45deg) translate(6px, -6px);
+    }
+
+    /* Hero Content */
+    .hero-content {
+      display: flex;
+      width: 100%;
+      height: 100%;
+      position: relative;
+      padding-top: 100px;
+      max-width: 1440px;
+      margin: 0 auto;
+    }
+
+    .hero-text-section {
+      width: 50%;
+      padding: 100px 0 0 5%;
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+      position: relative;
+    }
+
+    .hero-title-container {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .hero-title-line {
+      font-weight: 700;
+      font-size: 3.5rem;
+      line-height: 1.2;
+      color: #000000;
+    }
+
+    .highlight-text {
+      color: #FA1239;
+      position: relative;
+      display: inline-block;
+    }
+
+    .lets-text {
+      color: #000000; /* Make "Let's" black */
+    }
+
+    .decorative-lines-container {
+      position: relative;
+      display: inline-block;
+      width: 100%;
+    }
+
+    .decorative-lines {
+      position: absolute;
+      top: 27%;
+      left: 20;
+      width: 100%;
+      max-width: 417px;
+      height: 18px;
+      z-index: 1;
+      margin-top: 4px; /* Reduced margin to move lines upward */
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      align-items: center; /* Center the lines horizontally */
+    }
+
+    .line-1, .line-2 {
+      height: auto;
+      position: relative;
+    }
+
+    .line-1 {
+      width: 80%; /* First line is 80% width */
+    }
+
+    .line-2 {
+      width: 100%; /* Second line is 100% width */
+    }
+
+    .hero-description {
+      font-weight: 500;
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: #000000;
+      max-width: 100%;
+    }
+
+    .hero-buttons {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .btn-outline, .btn-primary {
+      padding: 12px 24px;
+      border-radius: 25px;
+      font-weight: 500;
+      font-size: 14px;
+      cursor: pointer;
+      transition: all 0.3s;
+      white-space: nowrap;
+      min-width: 160px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn-outline {
+      background: white;
+      color: #ff1744;
+      border: 2px solid #ff1744;
+      box-shadow: 0 4px 15px rgba(255, 23, 68, 0.3);
+    }
+
+    .btn-outline:hover {
+      background: #ff1744;
+      color: white;
+      box-shadow: 0 6px 20px rgba(255, 23, 68, 0.5);
+    }
+
+    .btn-primary {
+      background: #ff1744;
+      color: white;
+      border: 2px solid #ff1744;
+      box-shadow: 0 4px 15px rgba(255, 23, 68, 0.4);
+    }
+
+    .btn-primary:hover {
+      background: #e0153c;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(255, 23, 68, 0.6);
+    }
+
+    /* Shine effect for buttons */
+    .btn-outline::before, .btn-primary::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+      transition: left 0.7s;
+    }
+
+    .btn-outline:hover::before, .btn-primary:hover::before {
+      left: 100%;
+    }
+
+    /* Hero Image Section */
+    .hero-image-section {
+      flex: 1;
+      position: relative;
+      padding: 50px 5% 0 0;
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+    }
+
+    .hero-image-container {
+      position: relative;
+      width: 100%;
+      max-width: 650px;
+      height: 800px;
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+    }
+
+    /* Ellipse positioning - made much larger and positioned lower */
+    .ellipse-outer {
+      position: absolute;
+      width: 580px;
+      height: 580px;
+      background: #FFD1DA;
+      border-radius: 50%;
+      z-index: 1;
+      top: 60%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .ellipse-inner {
+      position: absolute;
+      width: 520px;
+      height: 520px;
+      background: #FFE7EB;
+      border-radius: 50%;
+      z-index: 2;
+      top: 60%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .hero-image {
+      position: absolute;
+      width: 480px;
+      height: 720px;
+      object-fit: cover;
+      z-index: 3;
+      top: 55%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      border-radius: 10px;
+    }
+
+    .rating-card {
+      position: absolute;
+      bottom: 120px;
+      left: 0;
+      width: 300px;
+      height: 90px;
+      background: rgba(255, 255, 255, 0.7);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 15px;
+      padding: 15px;
+      z-index: 4;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      backdrop-filter: blur(5px);
+    }
+
+    .rating-number {
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      font-size: 2.5rem;
+      line-height: 1;
+      color: #1CB098;
+    }
+
+    .rating-details {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .stars {
+      display: flex;
+      align-items: center;
+      gap: 3px;
+    }
+
+    .stars img {
+      width: 16px;
+      height: 16px;
+    }
+
+    .rating-text {
+      font-weight: 600;
+      font-size: 1rem;
+      line-height: 1.2;
+      color: #000000;
+    }
+
+    .stats-card {
+      position: absolute;
+      bottom: 20px;
+      right: 0;
+      width: 220px;
+      height: 110px;
+      background: rgba(255, 255, 255, 0.7);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 15px;
+      padding: 20px;
+      z-index: 4;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      backdrop-filter: blur(5px);
+    }
+
+    .stats-icon {
+      width: 60px;
+      height: 60px;
+    }
+
+    .stats-icon img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 50%;
+    }
+
+    .stats-content {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .stats-number {
+      font-weight: 800;
+      font-size: 1.5rem;
+      line-height: 1.2;
+      color: #000000;
+    }
+
+    .stats-text {
+      font-size: 0.9rem;
+      line-height: 1.2;
+      color: #666666;
+    }
+
+    /* Features Section - Increased sizes */
+    .features-section {
+      width: 100%;
+      background: #FFFFFF;
+      position: relative;
+      padding: 100px 0;
+    }
+
+    .features-container {
+      position: relative;
+      z-index: 2;
+      padding: 0 5%;
+      display: flex;
+      flex-direction: column;
+      gap: 60px;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .features-header {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 25px;
+      height: auto;
+      text-align: center;
+    }
+
+    .features-badge {
+      background: rgba(253, 146, 164, 0.3);
+      border-radius: 8px;
+      padding: 12px 24px;
+      font-weight: 600;
+      font-size: 18px;
+      line-height: 1.2;
+      color: #000000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .features-title {
+      font-weight: 700;
+      font-size: 2.2rem;
+      line-height: 1.3;
+      color: #000000;
+      text-align: center;
+      max-width: 900px;
+    }
+
+    .features-grid {
+      display: flex;
+      justify-content: center;
+      align-items: stretch;
+      gap: 30px;
+      height: auto;
+      flex-wrap: wrap;
+    }
+
+    .feature-card {
+      flex: 1;
+      min-width: 280px;
+      max-width: 330px;
+      min-height: 480px;
+      background: #FFFFFF;
+      border-radius: 25px;
+      box-shadow: 0px 8px 25px rgba(0, 0, 0, 0.12);
+      display: flex;
+      flex-direction: column;
+      gap: 25px;
+      padding: 30px 25px;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-12px);
+      box-shadow: 0px 15px 35px rgba(0, 0, 0, 0.18);
+    }
+
+    .feature-image {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+      height: 250px;
+    }
+
+    .feature-image img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 15px;
+    }
+
+    .feature-title {
+      font-size: 1.4rem;
+      line-height: 1.3;
+      color: #000000;
+      height: auto;
+      font-weight: 700;
+    }
+
+    .feature-description {
+      font-weight: 400;
+      font-size: 1rem;
+      line-height: 1.6;
+      color: #000000;
+      height: auto;
+    }
+
+    /* Mobile CTA Button */
+    .mobile-nav-cta {
+      display: none;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 1200px) {
+      .hero-title-line {
+        font-size: 3rem;
+      }
+      
+      .hero-text-section {
+        padding: 80px 0 0 5%;
+      }
+      
+      .hero-image-container {
+        max-width: 550px;
+        height: 700px;
+      }
+      
+      .hero-image {
+        width: 420px;
+        height: 620px;
+      }
+      
+      .ellipse-outer {
+        width: 500px;
+        height: 500px;
+      }
+      
+      .ellipse-inner {
+        width: 450px;
+        height: 450px;
+      }
+      
+      .rating-card {
+        width: 260px;
+        height: 80px;
+        bottom: 100px;
+      }
+      
+      .stats-card {
+        width: 200px;
+        height: 100px;
+      }
+
+      .features-title {
+        font-size: 2rem;
+      }
+      
+      .feature-card {
+        min-width: 260px;
+        max-width: 280px;
+        min-height: 450px;
+      }
+
+      .decorative-lines {
+        max-width: 350px;
+        margin-top: 4px; /* Consistent with desktop */
+        height: 16px;
+        gap: 3px;
+      }
+      
+      .line-1 {
+        width: 80%;
+      }
+    }
+
+    @media (max-width: 992px) {
+      .hero-content {
+        flex-direction: column;
+        padding-top: 120px;
+      }
+      
+      .hero-text-section {
+        width: 100%;
+        padding: 0 5%;
+        text-align: center;
+        align-items: center;
+        gap: 25px;
+      }
+      
+      .hero-title-line {
+        font-size: 2.5rem;
+        line-height: 1.2;
+      }
+      
+      .decorative-lines {
+        position: relative;
+        margin: 4px auto 0; /* Consistent with desktop */
+        left: 0;
+        transform: none;
+        max-width: 320px;
+        height: 14px;
+        gap: 3px;
+      }
+      
+      .line-1 {
+        width: 80%;
+      }
+      
+      .hero-image-section {
+        width: 100%;
+        padding: 40px 5% 0;
+        align-items: flex-end;
+      }
+      
+      .hero-image-container {
+        max-width: 100%;
+        height: 650px;
+      }
+      
+      .hero-image {
+        width: 380px;
+        height: 560px;
+      }
+      
+      .ellipse-outer {
+        width: 450px;
+        height: 450px;
+      }
+      
+      .ellipse-inner {
+        width: 400px;
+        height: 400px;
+      }
+      
+      .rating-card {
+        width: 240px;
+        height: 70px;
+        bottom: 120px;
+        left: 10%;
+      }
+      
+      .stats-card {
+        width: 180px;
+        height: 90px;
+        bottom: 30px;
+        right: 10%;
+      }
+      
+      .features-grid {
+        justify-content: center;
+      }
+      
+      .feature-card {
+        min-width: calc(50% - 20px);
+        max-width: calc(50% - 20px);
+      }
+
+      .features-title {
+        font-size: 1.8rem;
+      }
+
+      /* Improved Tablet Navigation */
+      .nav-container {
+        gap: 20px;
+        padding: 0 5%;
+      }
+      
+      .logo-container {
+        width: 160px;
+        height: 40px;
+      }
+      
+      .nav-menu {
+        gap: 15px;
+      }
+      
+      .nav-item span {
+        font-size: 14px;
+      }
+      
+      .nav-cta-button {
+        padding: 8px 16px;
+        font-size: 12px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .navigation {
+        height: 80px;
+      }
+      
+      .logo-container {
+        width: 140px;
+        height: 35px;
+      }
+      
+      .nav-menu {
+        display: none;
+        position: fixed;
+        top: 80px;
+        left: 0;
+        width: 100%;
+        background: white;
+        flex-direction: column;
+        padding: 20px;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+        gap: 15px;
+        z-index: 99;
+        height: auto;
+        max-height: calc(100vh - 80px);
+        overflow-y: auto;
+      }
+      
+      .nav-menu.active {
+        display: flex;
+      }
+      
+      .nav-item {
+        width: 100%;
+        justify-content: center;
+        padding: 15px;
+        height: auto;
+        border-bottom: 1px solid #f0f0f0;
+      }
+      
+      .nav-item:last-child {
+        border-bottom: none;
+      }
+      
+      .mobile-menu-toggle {
+        display: flex;
+      }
+      
+      .desktop-nav-cta {
+        display: none;
+      }
+      
+      .mobile-nav-cta {
+        display: block !important;
+        width: 100%;
+        margin-top: 10px;
+        padding: 12px;
+      }
+      
+      .hero-title-line {
+        font-size: 2rem;
+      }
+      
+      .hero-description {
+        font-size: 1rem;
+        line-height: 1.6;
+      }
+      
+      .hero-buttons {
+        flex-direction: column;
+        width: 100%;
+        max-width: 300px;
+        gap: 15px;
+      }
+      
+      .btn-outline, .btn-primary {
+        width: 100%;
+        padding: 12px 20px;
+      }
+      
+      .hero-image-container {
+        height: 550px;
+      }
+      
+      .hero-image {
+        width: 320px;
+        height: 480px;
+      }
+      
+      .ellipse-outer {
+        width: 380px;
+        height: 380px;
+      }
+      
+      .ellipse-inner {
+        width: 340px;
+        height: 340px;
+      }
+      
+      .rating-card {
+        width: 200px;
+        height: 60px;
+        bottom: 100px;
+        left: 5%;
+      }
+      
+      .rating-number {
+        font-size: 2rem;
+      }
+      
+      .rating-text {
+        font-size: 0.9rem;
+      }
+      
+      .stars img {
+        width: 14px;
+        height: 14px;
+      }
+      
+      .stats-card {
+        width: 160px;
+        height: 80px;
+        bottom: 20px;
+        right: 5%;
+        padding: 15px;
+      }
+      
+      .stats-icon {
+        width: 50px;
+        height: 50px;
+      }
+      
+      .stats-number {
+        font-size: 1.3rem;
+      }
+      
+      .stats-text {
+        font-size: 0.8rem;
+      }
+      
+      .features-section {
+        padding: 80px 0;
+      }
+      
+      .features-title {
+        font-size: 1.6rem;
+      }
+      
+      .feature-card {
+        min-width: 100%;
+        max-width: 100%;
+        min-height: 420px;
+      }
+
+      .feature-image {
+        height: 220px;
+      }
+
+      .feature-image img {
+        height: 180px;
+      }
+
+      .decorative-lines {
+        max-width: 280px;
+        margin-top: 4px; /* Consistent with desktop */
+        height: 12px;
+        gap: 2px;
+      }
+      
+      .line-1 {
+        width: 75%;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .hero-section {
+        min-height: 90vh;
+      }
+      
+      .hero-text-section {
+        gap: 20px;
+      }
+      
+      .hero-title-line {
+        font-size: 1.8rem;
+      }
+      
+      .hero-image-container {
+        height: 480px;
+      }
+      
+      .hero-image {
+        width: 280px;
+        height: 420px;
+      }
+      
+      .ellipse-outer {
+        width: 320px;
+        height: 320px;
+      }
+      
+      .ellipse-inner {
+        width: 280px;
+        height: 280px;
+      }
+      
+      .rating-card {
+        width: 180px;
+        height: 50px;
+        bottom: 80px;
+        left: 5%;
+        padding: 10px;
+      }
+      
+      .rating-number {
+        font-size: 1.8rem;
+      }
+      
+      .rating-text {
+        font-size: 0.8rem;
+      }
+      
+      .stars img {
+        width: 12px;
+        height: 12px;
+      }
+      
+      .stats-card {
+        width: 140px;
+        height: 70px;
+        bottom: 15px;
+        right: 5%;
+        padding: 12px;
+        gap: 10px;
+      }
+      
+      .stats-icon {
+        width: 40px;
+        height: 40px;
+      }
+      
+      .stats-number {
+        font-size: 1.1rem;
+      }
+      
+      .stats-text {
+        font-size: 0.7rem;
+      }
+      
+      .features-section {
+        padding: 60px 0;
+      }
+      
+      .features-badge {
+        font-size: 16px;
+        padding: 10px 20px;
+      }
+      
+      .features-title {
+        font-size: 1.4rem;
+      }
+
+      .feature-card {
+        min-height: 400px;
+        padding: 25px 20px;
+      }
+
+      .feature-image {
+        height: 200px;
+      }
+
+      .feature-image img {
+        height: 160px;
+      }
+
+      .decorative-lines {
+        max-width: 240px;
+        margin-top: 4px; /* Consistent with desktop */
+        height: 10px;
+        gap: 2px;
+      }
+      
+      .line-1 {
+        width: 75%;
+      }
+    }
+
+    @media (max-width: 400px) {
+      .hero-title-line {
+        font-size: 1.6rem;
+      }
+      
+      .hero-image-container {
+        height: 420px;
+      }
+      
+      .hero-image {
+        width: 240px;
+        height: 374px;
+      }
+      
+      .ellipse-outer {
+        width: 280px;
+        height: 280px;
+      }
+      
+      .ellipse-inner {
+        width: 240px;
+        height: 240px;
+      }
+      
+      .rating-card {
+        width: 160px;
+        height: 45px;
+        bottom: 70px;
+      }
+      
+      .stats-card {
+        width: 130px;
+        height: 65px;
+      }
+
+      .feature-card {
+        min-height: 380px;
+      }
+
+      .decorative-lines {
+        max-width: 300px;
+        margin-top: 4px; /* Consistent with desktop */
+        height: 8px;
+        gap: 1px;
+      }
+      
+      .line-1 {
+        width: 70%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="hero-background">
+      <!-- Navigation -->
+      <nav class="navigation">
+        <div class="nav-container">
+          <div class="logo-container">
+            <img src="./Group.png" alt="Resume Service Logo">
+          </div>
+          
+          <div class="nav-menu" id="navMenu">
+            <div class="nav-item">
+              <span>Home</span>
+            </div>
+            <div class="nav-item">
+              <span>About Us</span>
+            </div>
+            <div class="nav-item">
+              <span>Our Services</span>
+            </div>
+            <div class="nav-item">
+              <span>Pricing</span>
+            </div>
+            <div class="nav-item">
+              <span>FAQ</span>
+            </div>
+            <button class="nav-cta-button mobile-nav-cta">
+              Get a quote
+            </button>
+          </div>
+          
+          <button class="nav-cta-button desktop-nav-cta">
+            Get a quote
+          </button>
+          
+          <button class="mobile-menu-toggle" id="mobileMenuToggle">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+        </div>
+      </nav>
+
+      <!-- Hero Content -->
+      <div class="hero-content">
+        <div class="hero-text-section">
+          <div class="hero-title-container">
+            <div class="hero-title-line">Your Resume</div>
+            <div class="hero-title-line">
+              <span class="highlight-text">Deserves A Yes </span>
+              <span class="lets-text">Let's</span>
+              <div class="decorative-lines">
+                <img src="./Vector 1.png" alt="Decorative line 1" class="line-1">
+                <img src="./Vector 2.png" alt="Decorative line 2" class="line-2">
+              </div>
+            </div>
+            <div class="hero-title-line">Make It Happen</div>
+          </div>
+          <p class="hero-description">
+            If Your Resume Isn't Getting Responses, It's Time For An Upgrade. Get An ATS-Optimized Resume Crafted By HR Experts To Help You Land More Interviews. Our Resumes Are Designed To Get Your Foot In The Door And Place Your Name At The Top Of The Shortlist.
+          </p>
+          <div class="hero-buttons">
+            <button class="btn-outline">
+              RESUME PACKAGES
+            </button>
+            <button class="btn-primary">
+              CONTACT US
+            </button>
+          </div>
+        </div>
+
+        <div class="hero-image-section">
+          <div class="hero-image-container">
+            <!-- Ellipses with background colors -->
+            <div class="ellipse-outer"></div>
+            <div class="ellipse-inner"></div>
+            
+            <!-- Hero Image -->
+            <img src="portrait-happy-young-woman-standing-with-backpack-holding-books-mobile-phone-isolated-white-wall-removebg-preview 1.png" alt="Happy professional woman with resume" class="hero-image">
+            
+            <!-- Rating Card -->
+            <div class="rating-card">
+              <div class="rating-number">4.9</div>
+              <div class="rating-details">
+                <div class="stars">
+                  <img src="https://static.codia.ai/image/2025-09-30/01y9CogeD6.png" alt="Star">
+                  <img src="https://static.codia.ai/image/2025-09-30/x2Tf8J5MB6.png" alt="Star">
+                  <img src="https://static.codia.ai/image/2025-09-30/oyQKGxD1Gr.png" alt="Star">
+                  <img src="https://static.codia.ai/image/2025-09-30/xVCuORdxyV.png" alt="Star">
+                  <img src="https://static.codia.ai/image/2025-09-30/UHagT3DVM2.png" alt="Star">
+                </div>
+                <div class="rating-text">Instructor Rating</div>
+              </div>
+            </div>
+
+            <!-- Stats Card -->
+            <div class="stats-card">
+              <div class="stats-icon">
+                <img src="https://static.codia.ai/image/2025-09-30/OQuZ6SXKPb.png" alt="Resume statistics icon">
+              </div>
+              <div class="stats-content">
+                <div class="stats-number">260+</div>
+                <div class="stats-text">Online Resume Created</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section class="features-section">
+    <div class="features-container">
+      <div class="features-header">
+        <div class="features-badge">
+          What you Get
+        </div>
+        <h2 class="features-title">
+          You're not just another applicant and your resume shouldn't look like one
+        </h2>
+      </div>
+
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-image">
+            <img src="https://static.codia.ai/image/2025-09-30/0p7ZnkKvJp.png" alt="ATS Resume Optimization">
+          </div>
+          <h3 class="feature-title">A Resume That Passes ATS Filters</h3>
+          <p class="feature-description">
+            Get a professionally written, keyword-optimized resume that lands in recruiter inboxes—not rejection piles.
+          </p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-image">
+            <img src="https://static.codia.ai/image/2025-09-30/AZB4W5i6oN.png" alt="Professional Cover Letter">
+          </div>
+          <h3 class="feature-title">A Cover Letter That Gets Read</h3>
+          <p class="feature-description">
+            Stand out with a cover letter that speaks directly to the role and reflects your strengths.
+          </p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-image">
+            <img src="https://static.codia.ai/image/2025-09-30/gGmMaaWkbn.png" alt="LinkedIn Profile Optimization">
+          </div>
+          <h3 class="feature-title">A LinkedIn Profile That Works For You</h3>
+          <p class="feature-description">
+            Attract the right eyes, start conversations, and show up in recruiter searches.
+          </p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-image">
+            <img src="https://static.codia.ai/image/2025-09-30/An1AvKpFJj.png" alt="Interview Preparation">
+          </div>
+          <h3 class="feature-title">Interview Confidence</h3>
+          <p class="feature-description">
+            Interview preparation with real HR professionals so you speak clearly, confidently, and convincingly.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    // Mobile menu toggle functionality
+    document.addEventListener('DOMContentLoaded', function() {
+      const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+      const navMenu = document.getElementById('navMenu');
+      
+      mobileMenuToggle.addEventListener('click', function() {
+        navMenu.classList.toggle('active');
+        mobileMenuToggle.classList.toggle('active');
+        
+        // Prevent body scrolling when menu is open
+        if (navMenu.classList.contains('active')) {
+          document.body.style.overflow = 'hidden';
+        } else {
+          document.body.style.overflow = '';
+        }
+      });
+      
+      // Close mobile menu when clicking on a nav item
+      const navItems = document.querySelectorAll('.nav-item, .mobile-nav-cta');
+      navItems.forEach(item => {
+        item.addEventListener('click', function() {
+          navMenu.classList.remove('active');
+          mobileMenuToggle.classList.remove('active');
+          document.body.style.overflow = '';
+        });
+      });
+      
+      // Handle window resize
+      window.addEventListener('resize', function() {
+        if (window.innerWidth > 768) {
+          navMenu.classList.remove('active');
+          mobileMenuToggle.classList.remove('active');
+          document.body.style.overflow = '';
+        }
+      });
+    });
+  </script>
+</body>
+</html>
